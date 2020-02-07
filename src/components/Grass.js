@@ -13,7 +13,22 @@ class Grass extends Component {
    checkGrass(){}
 
    render(){
-      return <div>Grass.js</div>
+      console.log(this.props)
+
+      return <div>Grass.js
+
+      <p>{this.props.pokemon.name}</p>
+      <img 
+      src={this.props.pokemon.sprites.front_default}
+      onclick={() => {
+         this.props.catchPokemon({
+            name: this.props.pokemon.name,
+            image: this.props.sprites.front_default,
+         })
+      }} 
+      />
+
+      </div>
    }
 }
 

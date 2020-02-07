@@ -16,7 +16,13 @@ class Pokemon extends Component {
 
 
    render(){
-      return <div>Pokemon.js</div>
+      return (
+         <div>
+            <p>{this.pokemon.name}</p>
+            <img src={this.props.pokemon.image} />
+            <button>Release </button>
+         </div>
+      )
    }
 }
 

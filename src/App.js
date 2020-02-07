@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Finder from './components/Finder'
 import Pokedex from './components/Pokedex'
 import './App.css';
+import Axios from 'axios';
 
 
 class App extends Component {
@@ -11,11 +12,25 @@ class App extends Component {
     this.state = {
       caughtPokemon: [],
     }
+
+    this.catchPokemon = this.catchPokemon.bind(this)
   }
 
   componentDidMount(){}
 
-  catchPokemon(pokemon) {}
+  catchPokemon(pokemon) {
+    Axios.post('/api/pokemon', {pokemon}).then(res => {
+      this.setState({
+        caughtPokemon: res.data
+      })
+    })
+  }
+
+  catchPokemon(pokemon){
+    // axios.post('/api.poke')
+  }
+
+
 
   saveName(id, newName) {}
 
@@ -26,10 +41,11 @@ class App extends Component {
 
   render() {
     return <div className="App">
-      <Header />
-      <Finder />
-      <Pokedex />
-      App.js</div>
+        <Header />
+        <Finder catchPokemon = {this.catchPokemon} />
+        <Pokedex caughtPokemon = {this.state.caughtPokemon} />
+        
+      </div>
   }
 
 }
